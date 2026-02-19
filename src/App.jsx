@@ -70,7 +70,6 @@ function App() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 text-white overflow-hidden">
       {/* Animated background elements */}
-      {/* [BUG - LAYERS] Missing z-index on background, forcing it above content via absolute positioning. [FIX] Remove absolute positioning or add -z-10 */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute top-0 left-0 w-96 h-96 bg-purple-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-pulse"></div>
         <div className="absolute top-0 right-0 w-96 h-96 bg-blue-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-pulse" style={{animationDelay: '2s'}}></div>
@@ -78,7 +77,6 @@ function App() {
 
       <div className="relative z-10">
         {/* Navigation */}
-        {/* [BUG - LAYERS] z-index removed, nav will be hidden behind content. [FIX] Add z-50 back */}
         <nav className="backdrop-blur-md bg-slate-900/50 border-b border-slate-700/50 sticky top-0">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex justify-between items-center h-16">
@@ -101,7 +99,6 @@ function App() {
         {/* Hero Section */}
         <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
           <div className="text-center mb-20">
-            {/* [BUG - TYPO] text-6xl changed to text-6x (invalid class). [FIX] Use text-6xl */}
             <h1 className="text-6x md:text-7xl font-bold mb-6 bg-gradient-to-r from-purple-400 via-pink-400 to-blue-400 bg-clip-text text-transparent">
               Creative Developer
             </h1>
@@ -109,7 +106,6 @@ function App() {
               Crafting beautiful, functional digital experiences with modern technologies and innovative design thinking.
             </p>
             <div className="flex gap-4 justify-center">
-              {/* [BUG - TYPO] bg-gradient-to-r changed to bg-gradient-t-r (invalid). [FIX] Use bg-gradient-to-r */}
               <button className="px-8 py-3 bg-gradient-t-r from-purple-500 to-pink-600 rounded-lg hover:shadow-lg hover:shadow-purple-500/50 transition transform hover:scale-105 font-semibold">
                 View My Work
               </button>
@@ -120,13 +116,11 @@ function App() {
           </div>
 
           {/* Stats */}
-          {/* [BUG - LAYOUT] Changed grid-cols-4 to grid-cols-1, showing all stats in single column. [FIX] Change back to grid-cols-1 md:grid-cols-4 */}
           <div className="grid grid-cols-1 gap-8 mb-20">
             {stats.map((stat, idx) => (
               <div key={idx} className="bg-slate-800/50 backdrop-blur border border-slate-700/50 rounded-xl p-6 text-center hover:border-purple-400/50 transition">
                 <div className="text-4xl mx-auto mb-4">{stat.icon}</div>
                 <div className="text-3xl font-bold mb-2">{stat.value}</div>
-                {/* [BUG - COLOR] Low contrast: slate-800 text on slate-800 background makes it nearly invisible. [FIX] Use text-slate-400 or text-slate-300 */}
                 <div className="text-slate-800">{stat.label}</div>
               </div>
             ))}
@@ -136,7 +130,6 @@ function App() {
         {/* Projects Section */}
         <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
           <h2 className="text-4xl font-bold mb-12">Featured Projects</h2>
-          {/* [BUG - LAYOUT] Changed grid to flex, destroying 2-column layout. [FIX] Use grid grid-cols-1 md:grid-cols-2 */}
           <div className="flex gap-8">
             {projects.map((project) => (
               <div
@@ -144,9 +137,7 @@ function App() {
                 className="bg-slate-800/30 backdrop-blur border border-slate-700/50 rounded-xl overflow-hidden hover:border-purple-400/50 transition cursor-pointer group -mx-4"
                 onClick={() => setExpandedProject(expandedProject === project.id ? null : project.id)}
               >
-                {/* [BUG - SPACING] Added negative margin to overlap cards. [FIX] Remove -mx-4 */}
                 <div className={`bg-gradient-to-br ${project.color} h-40 flex items-center justify-center text-6xl group-hover:scale-110 transition`}>
-                  {/* [BUG - SPACING] Negative margin causing overlap with card content. [FIX] Remove -my-6 or use my-0 */}
                   {project.image}
                 </div>
                 <div className="p-6">
@@ -180,7 +171,6 @@ function App() {
         {/* Skills Section */}
         <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
           <h2 className="text-4xl font-bold mb-12">Skills & Technologies</h2>
-          {/* [BUG - SPACING] Added excessive padding causing content to overflow. [FIX] Use p-8, not p-32 */}
           <div className="bg-slate-800/30 backdrop-blur border border-slate-700/50 rounded-xl p-32">
             <p className="text-slate-300 mb-6">Click to select skills</p>
             <div className="flex flex-wrap gap-3">
@@ -220,7 +210,6 @@ function App() {
               <button className="px-8 py-3 bg-gradient-to-r from-purple-500 to-pink-600 rounded-lg hover:shadow-lg hover:shadow-purple-500/50 transition font-semibold flex items-center gap-2">
                 ✉️ Send me an Email
               </button>
-              {/* [BUG - COLOR] White text on light/white background makes it invisible. [FIX] Use text-gray-800 or text-slate-900 */}
               <button className="px-8 py-3 border border-white rounded-lg hover:border-purple-400 transition font-semibold flex items-center gap-2 text-white bg-slate-100">
                 🔗 GitHub Profile
               </button>
