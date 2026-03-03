@@ -1,5 +1,9 @@
 {
   "repository": "Tag Manager (Flex Wrap)",
+  "playwright_config": {
+    "viewport_height": 4000,
+    "note": "Must scroll down 300px before capturing Bug #1 and #2 to reveal positioning and z-index failures."
+  },
   "bugs": [
     {
       "comment": "Bug #1 - position-fixed-to-absolute",
@@ -9,12 +13,12 @@
       "line_number": 73,
       "clean_code": "      <div className=\"fixed inset-0 overflow-hidden pointer-events-none\">",
       "buggy_code": "      <div className=\"absolute inset-0 overflow-hidden pointer-events-none\">",
-      "css_selector": ".fixed",
+      "css_selector": ".inset-0.overflow-hidden",
       "bounding_box": {
         "x": 0,
         "y": 0,
         "width": 1280,
-        "height": 720
+        "height": 1500
       }
     },
     {
@@ -25,12 +29,12 @@
       "line_number": 79,
       "clean_code": "        <nav className=\"backdrop-blur-md bg-slate-900/50 border-b border-slate-700/50 sticky top-0 z-50\">",
       "buggy_code": "        <nav className=\"backdrop-blur-md bg-slate-900/50 border-b border-slate-700/50 sticky top-0\">",
-      "css_selector": ".z-50",
+      "css_selector": "nav.sticky.backdrop-blur-md",
       "bounding_box": {
         "x": 0,
         "y": 0,
         "width": 1280,
-        "height": 65
+        "height": 250
       }
     },
     {
@@ -41,7 +45,7 @@
       "line_number": 102,
       "clean_code": "            <h1 className=\"text-6xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-purple-400 via-pink-400 to-blue-400 bg-clip-text text-transparent\">",
       "buggy_code": "            <h1 className=\"text-6x md:text-7xl font-bold mb-6 bg-gradient-to-r from-purple-400 via-pink-400 to-blue-400 bg-clip-text text-transparent\">",
-      "css_selector": ".text-6xl",
+      "css_selector": "h1:has-text(\"Creative Developer\")",
       "bounding_box": {
         "x": 32,
         "y": 145,
@@ -57,7 +61,7 @@
       "line_number": 106,
       "clean_code": "              <button className=\"px-8 py-3 bg-gradient-to-r from-purple-500 to-pink-600 rounded-lg hover:shadow-lg hover:shadow-purple-500/50 transition transform hover:scale-105 font-semibold\">",
       "buggy_code": "              <button className=\"px-8 py-3 bg-gradient-t-r from-purple-500 to-pink-600 rounded-lg hover:shadow-lg hover:shadow-purple-500/50 transition transform hover:scale-105 font-semibold\">",
-      "css_selector": ".bg-gradient-to-r",
+      "css_selector": "button:has-text(\"View My Work\")",
       "bounding_box": {
         "x": 463,
         "y": 329,
@@ -73,7 +77,7 @@
       "line_number": 119,
       "clean_code": "          <div className=\"grid grid-cols-1 md:grid-cols-4 gap-8 mb-20\">",
       "buggy_code": "          <div className=\"grid grid-cols-1 gap-8 mb-20\">",
-      "css_selector": ".grid-cols-4",
+      "css_selector": "section:has(h1:has-text(\"Creative Developer\")) >> div.grid.gap-8.mb-20",
       "bounding_box": {
         "x": 32,
         "y": 458,
@@ -89,7 +93,7 @@
       "line_number": 124,
       "clean_code": "                <div className=\"text-slate-400\">{stat.label}</div>",
       "buggy_code": "                <div className=\"text-slate-800\">{stat.label}</div>",
-      "css_selector": ".text-slate-400",
+      "css_selector": "div:has-text(\"Projects Completed\")",
       "bounding_box": {
         "x": 57,
         "y": 583,
@@ -105,7 +109,7 @@
       "line_number": 133,
       "clean_code": "          <div className=\"grid grid-cols-1 md:grid-cols-2 gap-8\">",
       "buggy_code": "          <div className=\"flex gap-8\">",
-      "css_selector": ".grid",
+      "css_selector": "section:has(h2:has-text(\"Featured Projects\")) > div",
       "bounding_box": {
         "x": 32,
         "y": 1577,
@@ -121,11 +125,11 @@
       "line_number": 138,
       "clean_code": "                className=\"bg-slate-800/30 backdrop-blur border border-slate-700/50 rounded-xl overflow-hidden hover:border-purple-400/50 transition cursor-pointer group\"",
       "buggy_code": "                className=\"bg-slate-800/30 backdrop-blur border border-slate-700/50 rounded-xl overflow-hidden hover:border-purple-400/50 transition cursor-pointer group -mx-4\"",
-      "css_selector": ".-mx-4",
+      "css_selector": "div:has(h3:has-text(\"Modern Dashboard Platform\"))",
       "bounding_box": {
-        "x": 16,
+        "x": 0,
         "y": 1577,
-        "width": 388,
+        "width": 420,
         "height": 442
       }
     },
@@ -137,7 +141,7 @@
       "line_number": 174,
       "clean_code": "          <div className=\"bg-slate-800/30 backdrop-blur border border-slate-700/50 rounded-xl p-8\">",
       "buggy_code": "          <div className=\"bg-slate-800/30 backdrop-blur border border-slate-700/50 rounded-xl p-32\">",
-      "css_selector": ".p-8",
+      "css_selector": "section:has(> h2:has-text(\"Skills & Technologies\")) >> div.rounded-xl[class*=\"bg-slate-800\"]",
       "bounding_box": {
         "x": 32,
         "y": 2266,
@@ -153,7 +157,7 @@
       "line_number": 213,
       "clean_code": "              <button className=\"px-8 py-3 border border-slate-500 rounded-lg hover:border-purple-400 transition font-semibold flex items-center gap-2\">",
       "buggy_code": "              <button className=\"px-8 py-3 border border-white rounded-lg hover:border-purple-400 transition font-semibold flex items-center gap-2 text-white bg-slate-100\">",
-      "css_selector": ".border-slate-500",
+      "css_selector": "button:has-text(\"GitHub Profile\")",
       "bounding_box": {
         "x": 661,
         "y": 3158,
